@@ -1,0 +1,221 @@
+<title>Harbor Lane Dental</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=Figtree:wght@400;500;600&display=swap">
+<style>
+/* Layout: split hero with appointment card, then services grid, trust strip, booking form, footer */
+:root{
+  --bg:#F6FAFA; --surface:#FFFFFF; --ink:#0E2A2E; --muted:#4F6B6E;
+  --brand:#0F5E5A; --brand-ink:#FFFFFF; --sea:#D8EEEC; --line:#D3E3E2; --sun:#F2B544;
+  --display:"Bricolage Grotesque", "Segoe UI", system-ui, sans-serif;
+  --body:"Figtree", "Segoe UI", system-ui, sans-serif;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#0B1A1C; --surface:#11262A; --ink:#E6F2F1; --muted:#9DB8B9;
+  --brand:#4FC2B6; --brand-ink:#06201F; --sea:#16363A; --line:#21424A; --sun:#F2B544; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#0B1A1C; --surface:#11262A; --ink:#E6F2F1; --muted:#9DB8B9;
+  --brand:#4FC2B6; --brand-ink:#06201F; --sea:#16363A; --line:#21424A; --sun:#F2B544; color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.6}
+.wrap{max-width:1120px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+h1,h2,h3{font-family:var(--display);line-height:1.1;text-wrap:balance;margin:0}
+a{color:inherit}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:14px 22px;border-radius:999px;font-weight:600;text-decoration:none;border:0;cursor:pointer;font:600 15px var(--body)}
+.btn-main{background:var(--brand);color:var(--brand-ink)}
+.btn-ghost{background:transparent;color:var(--ink);border:1.5px solid var(--line)}
+.btn:focus-visible,input:focus-visible,select:focus-visible{outline:3px solid var(--sun);outline-offset:2px}
+
+header{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--bg);border-bottom:1px solid var(--line)}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--bg)}
+.nav{display:flex;justify-content:space-between;align-items:center;padding-block:14px;gap:16px}
+.logo{display:flex;align-items:center;gap:10px;font-family:var(--display);font-weight:700;font-size:20px}
+.logo svg{flex:none}
+.nav-links{display:flex;gap:24px;align-items:center;font-weight:500}
+.nav-links a{text-decoration:none;color:var(--muted)}
+.phone{font-variant-numeric:tabular-nums;font-weight:600}
+@media (max-width:760px){.nav-links a:not(.phone){display:none}}
+
+.hero{display:grid;grid-template-columns:1.25fr 1fr;gap:48px;align-items:center;padding-block:64px 56px}
+.eyebrow{font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:var(--brand);font-weight:600}
+.hero h1{font-size:clamp(38px,6vw,64px);margin:14px 0 18px;letter-spacing:-.02em}
+.hero h1 em{font-style:normal;color:var(--brand)}
+.hero p{color:var(--muted);font-size:18px;max-width:52ch;margin:0 0 28px}
+.cta-row{display:flex;flex-wrap:wrap;gap:12px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:20px;padding:26px;box-shadow:0 18px 40px -24px rgba(15,94,90,.35)}
+.slots h3{font-size:20px;margin-bottom:4px}
+.slots small{color:var(--muted)}
+.slot-list{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:18px 0}
+.slot{padding:10px 0;text-align:center;border-radius:10px;background:var(--sea);font-weight:600;font-variant-numeric:tabular-nums;border:1.5px solid transparent;cursor:pointer;color:var(--ink);font-family:var(--body);font-size:14px}
+.slot[aria-pressed="true"]{border-color:var(--brand);background:var(--surface)}
+.offer{display:flex;gap:12px;align-items:flex-start;padding-top:16px;border-top:1px dashed var(--line)}
+.offer b{font-family:var(--display);font-size:26px;color:var(--brand)}
+@media (max-width:860px){.hero{grid-template-columns:1fr;padding-block:40px}}
+
+.trust{background:var(--brand);color:var(--brand-ink)}
+.trust .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:20px;padding-block:22px;font-weight:500}
+.trust span b{font-family:var(--display);font-size:22px;margin-right:6px}
+
+section{padding-block:72px}
+.sec-head{display:flex;justify-content:space-between;align-items:end;gap:24px;flex-wrap:wrap;margin-bottom:32px}
+.sec-head h2{font-size:clamp(28px,4vw,40px);max-width:18ch}
+.sec-head p{color:var(--muted);max-width:44ch;margin:0}
+.services{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.svc{padding:24px;border-radius:16px;background:var(--surface);border:1px solid var(--line);display:flex;flex-direction:column;gap:8px;min-width:0}
+.svc h3{font-size:19px}
+.svc p{margin:0;color:var(--muted);font-size:15px}
+.svc .code{margin-top:auto;padding-top:10px;font-size:12px;letter-spacing:.06em;color:var(--brand);font-weight:600;text-transform:uppercase}
+@media (max-width:860px){.services{grid-template-columns:1fr 1fr}}
+@media (max-width:560px){.services{grid-template-columns:1fr}}
+
+.split{display:grid;grid-template-columns:1fr 1fr;gap:40px}
+@media (max-width:860px){.split{grid-template-columns:1fr}}
+.quote{font-family:var(--display);font-size:24px;line-height:1.35;margin:0 0 14px}
+.who{color:var(--muted);font-size:14px}
+.ins{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+.ins span{padding:6px 12px;border-radius:999px;background:var(--sea);font-size:14px;font-weight:500}
+.hours{width:100%;border-collapse:collapse;font-variant-numeric:tabular-nums}
+.hours td{padding:10px 0;border-bottom:1px solid var(--line)}
+.hours td:last-child{text-align:right;color:var(--muted)}
+
+form{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+form .full{grid-column:1/-1}
+label{display:flex;flex-direction:column;gap:6px;font-size:14px;font-weight:600}
+input,select{font:16px var(--body);padding:12px 14px;border-radius:12px;border:1.5px solid var(--line);background:var(--bg);color:var(--ink)}
+@media (max-width:560px){form{grid-template-columns:1fr}}
+.ok{padding:14px 16px;border-radius:12px;background:var(--sea);font-weight:500}
+
+footer{border-top:1px solid var(--line);padding-block:32px;color:var(--muted);font-size:14px}
+footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
+@media (prefers-reduced-motion:no-preference){.btn,.slot{transition:transform .15s}.btn:hover{transform:translateY(-1px)}}
+</style>
+
+<header>
+  <div class="wrap nav">
+    <div class="logo">
+      <svg width="28" height="28" viewBox="0 0 28 28" aria-hidden="true"><circle cx="14" cy="14" r="14" fill="var(--brand)"/><path d="M8 18c2-1.6 4-1.6 6 0s4 1.6 6 0M8 13c2-1.6 4-1.6 6 0s4 1.6 6 0" stroke="var(--brand-ink)" stroke-width="2" fill="none" stroke-linecap="round"/></svg>
+      Harbor Lane Dental
+    </div>
+    <nav class="nav-links">
+      <a href="#services">Services</a>
+      <a href="#visit">Visit us</a>
+      <a href="#book">Book</a>
+      <span class="phone">(555) 014-2290</span>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <div class="wrap hero">
+    <div>
+      <div class="eyebrow">Family &amp; cosmetic dentistry · Est. 2009</div>
+      <h1>Gentle dental care, <em>booked in a minute.</em></h1>
+      <p>Cleanings, fillings, Invisalign and same-day emergency visits for the whole family. Evening and Saturday hours, and we file your insurance for you.</p>
+      <div class="cta-row">
+        <a class="btn btn-main" href="#book">Book an appointment</a>
+        <a class="btn btn-ghost" href="#services">See services</a>
+      </div>
+    </div>
+    <div class="card slots">
+      <h3>Next openings</h3>
+      <small>Thursday, Oct 29 · Dr. Amara Kell</small>
+      <div class="slot-list" role="group" aria-label="Available times">
+        <button class="slot" aria-pressed="false">8:30 AM</button>
+        <button class="slot" aria-pressed="true">10:15 AM</button>
+        <button class="slot" aria-pressed="false">1:00 PM</button>
+        <button class="slot" aria-pressed="false">3:45 PM</button>
+        <button class="slot" aria-pressed="false">5:30 PM</button>
+        <button class="slot" aria-pressed="false">6:45 PM</button>
+      </div>
+      <div class="offer">
+        <b>$129</b>
+        <div><strong>New patient special</strong><br><small>Exam, cleaning and full X-rays for patients without insurance.</small></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="trust">
+    <div class="wrap">
+      <span><b>4.9</b>average from 612 patient reviews</span>
+      <span><b>Same-day</b>emergency appointments</span>
+      <span><b>In-network</b>with most PPO plans</span>
+    </div>
+  </div>
+
+  <section id="services">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2>Everything your smile needs, under one roof</h2>
+        <p>No referrals across town. Our team handles routine care, cosmetic work and urgent problems in the same office.</p>
+      </div>
+      <div class="services">
+        <div class="svc"><h3>Cleanings &amp; exams</h3><p>Twice-yearly checkups with digital X-rays that use up to 80% less radiation than film.</p><span class="code">Preventive</span></div>
+        <div class="svc"><h3>Tooth-colored fillings</h3><p>Composite fillings matched to your natural shade, usually finished in one visit.</p><span class="code">Restorative</span></div>
+        <div class="svc"><h3>Invisalign</h3><p>Clear aligners with a free 3D scan consultation and monthly payment plans.</p><span class="code">Orthodontic</span></div>
+        <div class="svc"><h3>Crowns in one day</h3><p>Same-day ceramic crowns milled in office, so there is no temporary and no second trip.</p><span class="code">Restorative</span></div>
+        <div class="svc"><h3>Teeth whitening</h3><p>In-chair whitening in about an hour, or custom take-home trays.</p><span class="code">Cosmetic</span></div>
+        <div class="svc"><h3>Emergency care</h3><p>Toothache, chipped tooth or lost filling? Call before noon and we will see you today.</p><span class="code">Urgent</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="visit" style="padding-top:0">
+    <div class="wrap split">
+      <div class="card">
+        <p class="quote">“I used to dread the dentist. Dr. Kell explained every step and my kids actually ask when they get to go back.”</p>
+        <div class="who">Sample review · patient since 2021</div>
+        <div class="ins" aria-label="Insurance accepted">
+          <span>Delta Dental</span><span>MetLife</span><span>Cigna PPO</span><span>Aetna</span><span>Guardian</span>
+        </div>
+      </div>
+      <div>
+        <h2 style="font-size:28px;margin-bottom:14px">Hours</h2>
+        <table class="hours">
+          <tr><td>Monday – Thursday</td><td>8:00 AM – 7:00 PM</td></tr>
+          <tr><td>Friday</td><td>8:00 AM – 4:00 PM</td></tr>
+          <tr><td>Saturday</td><td>9:00 AM – 2:00 PM</td></tr>
+          <tr><td>Sunday</td><td>Emergencies by phone</td></tr>
+        </table>
+        <p style="color:var(--muted);margin-top:16px">214 Harbor Lane, Suite 3 · Free parking behind the building</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="book" style="padding-top:0">
+    <div class="wrap">
+      <div class="card" style="max-width:760px;margin:0 auto">
+        <h2 style="font-size:30px;margin-bottom:6px">Request an appointment</h2>
+        <p style="color:var(--muted);margin:0 0 22px">We confirm by phone or text within one business hour.</p>
+        <form id="bookForm">
+          <label>Full name<input id="f-name" required placeholder="Jordan Ellis"></label>
+          <label>Phone<input id="f-phone" required placeholder="(555) 000-0000"></label>
+          <label>Reason for visit
+            <select id="f-reason"><option>Cleaning &amp; checkup</option><option>Toothache or emergency</option><option>Invisalign consultation</option><option>Whitening</option><option>Other</option></select>
+          </label>
+          <label>Preferred day<select id="f-day"><option>Any weekday</option><option>Weekday evening</option><option>Saturday</option></select></label>
+          <div class="full"><button class="btn btn-main" type="submit">Request appointment</button></div>
+          <div class="full ok" id="ok" hidden>Thanks! In a live site, this request would go straight to the front desk.</div>
+        </form>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 Harbor Lane Dental</span>
+    <span>Concept design · fictional practice for portfolio use</span>
+  </div>
+</footer>
+
+<script>
+document.querySelectorAll('.slot').forEach(b=>b.addEventListener('click',()=>{
+  document.querySelectorAll('.slot').forEach(x=>x.setAttribute('aria-pressed','false'));
+  b.setAttribute('aria-pressed','true');
+}));
+document.getElementById('bookForm').addEventListener('submit',e=>{
+  e.preventDefault();
+  document.getElementById('ok').hidden=false;
+});
+</script>
